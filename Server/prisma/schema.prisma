@@ -12,3 +12,77 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Users {
+  idUser String @id
+  name String
+  email String
+}
+
+model Products {
+  idProduct String @id
+  name String
+  price Float
+  rating Float?
+  stockQuantity Int
+  Sales Sales[]
+  Purchases Purchases[]
+}
+
+model Sales {
+  idSale String @id
+  idProduct String
+  timestamp DateTime
+  quantity Int
+  unitPrice Float
+  totalAmount Float
+  product Products @relation(fields: [idProduct], references: [idProduct])
+}
+
+model Purchases {
+  idPurchase String @id
+  idProduct String
+  TimeStamp DateTime
+  Quantity Int
+  unitCost Float
+  TotalCost Float
+  product Products @relation(fields: [idProduct], references: [idProduct])
+}
+
+model Expenses {
+  idExpense String @id
+  Category String
+  Amount Float
+  TimeStamp DateTime
+}
+
+model SalesSummary {
+  idSalesSummary String @id
+  Quantity Int
+  TotalAmount Float
+  ChangePercentage Float?
+  date DateTime
+}
+
+model PurchasesSummary {
+  idPurchasesSummary String @id
+  TotalPurchased Float
+  changePercentage Float?
+  dat DateTime
+}
+
+model ExpensesSummary {
+  idExpensesSummary String @id
+  TotalExpenses Float
+  ChangePercentage Float?
+  date DateTime
+  ExpenseByCategory ExpensesByCategory[]
+}
+
+model ExpensesByCategory {
+  idExpenseByCategory String @id
+  idExpensesSummary String
+  Category String
+  Amount Float
+  ExpenseSummary ExpensesSummary @relation(fields: [idExpenseByCategory], references: [idExpensesSummary])
+}
