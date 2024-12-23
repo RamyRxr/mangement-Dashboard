@@ -56,33 +56,32 @@ model Expenses {
   TimeStamp DateTime
 }
 
-model SalesSummary {
-  idSalesSummary String @id
-  Quantity Int
+model SaleSummary {
+  idSaleSummary String @id
   TotalAmount Float
   ChangePercentage Float?
   date DateTime
 }
 
-model PurchasesSummary {
-  idPurchasesSummary String @id
+model PurchaseSummary {
+  idPurchaseSummary String @id
   TotalPurchased Float
-  changePercentage Float?
-  dat DateTime
-}
-
-model ExpensesSummary {
-  idExpensesSummary String @id
-  TotalExpenses Float
   ChangePercentage Float?
   date DateTime
-  ExpenseByCategory ExpensesByCategory[]
 }
 
-model ExpensesByCategory {
+model ExpenseSummary {
+  idExpenseSummary String @id
+  TotalExpenses Float
+  date DateTime
+  ExpenseByCategory ExpenseByCategory[]
+}
+
+model ExpenseByCategory {
   idExpenseByCategory String @id
   idExpensesSummary String
   Category String
-  Amount Float
-  ExpenseSummary ExpensesSummary @relation(fields: [idExpenseByCategory], references: [idExpensesSummary])
+  Amount BigInt
+  date DateTime
+  ExpenseSummary ExpenseSummary @relation(fields: [idExpenseByCategory], references: [idExpenseSummary])
 }
