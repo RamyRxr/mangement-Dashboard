@@ -18,11 +18,11 @@ const Dashboard = () => {
             
             <CardPopularProducts />
 
-            {/* <CardSalesSummary />
+            {/* <CardSalesSummary /> */}
 
             <CardPurchaseSummary />
 
-            <CardExpenseSummary /> */}
+            {/* <CardExpenseSummary /> */}
             
             <StatCard
                 title="Customer & Expenses"
