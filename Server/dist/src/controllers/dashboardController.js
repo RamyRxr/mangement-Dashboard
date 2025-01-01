@@ -15,12 +15,12 @@ const prisma = new client_1.PrismaClient();
 const getDashboardMetrics = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const popularProducts = yield prisma.products.findMany({
-            take: 15,
+            take: 10,
             orderBy: {
                 stockQuantity: "desc",
             },
         });
-        const salesSumary = yield prisma.salesSummary.findMany({
+        const salesSummary = yield prisma.salesSummary.findMany({
             take: 5,
             orderBy: {
                 date: "desc",
@@ -47,14 +47,14 @@ const getDashboardMetrics = (req, res) => __awaiter(void 0, void 0, void 0, func
         const expenseByCategorySummary = expenseByCategorySummaryRaw.map((item) => (Object.assign(Object.assign({}, item), { amount: item.amount.toString() })));
         res.json({
             popularProducts,
-            salesSumary,
+            salesSummary,
             purchaseSummary,
             expenseSummary,
             expenseByCategorySummary,
         });
     }
     catch (error) {
-        res.status(500).json({ message: " error retrieving dashboard metrics " });
+        res.status(500).json({ message: "Error retrieving dashboard metrics" });
     }
 });
 exports.getDashboardMetrics = getDashboardMetrics;
