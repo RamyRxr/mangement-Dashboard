@@ -17,7 +17,9 @@ const CardPurchaseSummary = () => {
         <>
           {/* HEADER */}
           <div className="mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Purchase Summary</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              Purchase Summary
+            </h2>
             <span className="text-sm text-gray-400">22 - 29 October 2023</span>
           </div>
           <hr />
