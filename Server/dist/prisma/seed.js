@@ -86,10 +86,4 @@ function main() {
         }
     });
 }
-main()
-    .catch((e) => {
-    console.error("Error during seeding:", e);
-})
-    .finally(() => __awaiter(void 0, void 0, void 0, function* () {
-    yield prisma.$disconnect();
-}));
+main().catch((e) => { console.error("Error during seeding:", e); }).finally(() => __awaiter(void 0, void 0, void 0, function* () { yield prisma.$disconnect(); }));

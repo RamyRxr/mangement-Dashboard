@@ -74,10 +74,4 @@ async function main() {
     }
 }
 
-main()
-    .catch((e) => {
-        console.error("Error during seeding:", e);
-    })
-    .finally(async () => {
-        await prisma.$disconnect();
-    });
+main().catch( (e) => { console.error("Error during seeding:", e); }).finally(async () => { await prisma.$disconnect(); });
