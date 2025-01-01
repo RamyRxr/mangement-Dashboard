@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createApi , fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
@@ -32,6 +31,7 @@ export interface PurchaseSummary {
 }
 
 export interface ExpenseSummary {
+    changePercentage: number;
     expenseSummarId: string;
     totalExpenses: number;
     date: string;
